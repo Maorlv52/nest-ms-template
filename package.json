@@ -6,8 +6,7 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "predev": "lsof -ti:3000 | xargs kill -9 || true",
-    "dev": "nodemon --watch src --exec ts-node src/main.ts",
+    "dev": "lsof -ti:3000 | xargs kill -9 || true && nodemon --signal SIGTERM --watch src --exec ts-node src/main.ts",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
