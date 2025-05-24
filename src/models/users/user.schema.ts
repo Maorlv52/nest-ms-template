@@ -8,5 +8,5 @@ export const UserSchema = new Schema<IUsersModel>(
     email: { type: String, unique: true },
     status: { type: String, enum: Object.values(EStatuses), required: true },
   },
-  { timestamps: true, strict: true },
+  { timestamps: true, strict: true, versionKey: false },
 );
