@@ -1,10 +1,4 @@
-import {
-  Body,
-  Controller,
-  Get,
-  Post,
-  NotFoundException,
-} from '@nestjs/common';
+import { Body, Controller, Get, Post, NotFoundException } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { IUsersModel } from '../../interfaces/usersModel.interfaces';
 import { CreateUserDto } from './dto/create-user.dto';

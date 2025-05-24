@@ -1,8 +1,8 @@
-import { Types } from 'mongoose';
-import { Injectable } from '@nestjs/common';
+import { Model, Types } from 'mongoose';
+import { HttpStatus, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
 import { IUsersModel } from '../../interfaces/usersModel.interfaces';
+import { errorHandler } from '../../helperFunctions/errorFunctions';
 
 @Injectable()
 export class UsersService {
@@ -15,8 +15,16 @@ export class UsersService {
   }
 
   async createUser(data: Partial<IUsersModel>): Promise<IUsersModel> {
-    const createdUser = new this.userModel(data);
-    return createdUser.save();
+    try {
+      const createdUser = new this.userModel(data);
+      return await createdUser.save();
+    } catch (error) {
+      return errorHandler(
+        error,
+        'Error creating user',
+        HttpStatus.I_AM_A_TEAPOT,
+      );
+    }
   }
 
   async findById(id: string): Promise<IUsersModel | null> {

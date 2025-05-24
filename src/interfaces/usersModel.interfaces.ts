@@ -1,4 +1,3 @@
-import { Types } from 'mongoose';
 import { EStatuses } from '../enums/usersEnums';
 
 export interface IUsersModel {
